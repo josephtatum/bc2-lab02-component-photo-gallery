@@ -4,7 +4,6 @@ export class ListItem extends Component {
 
     renderHTML() {
         const image = this.props.image;
-        console.log(image);
         
         return /*html*/`
     

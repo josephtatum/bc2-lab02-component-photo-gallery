@@ -3,7 +3,6 @@ import Component from '../component.js';
 import { Header } from './header.js';
 import { Footer } from './footer.js';
 import { UnorderedList } from './unordered-list.js';
-import { ListItem } from './list-item.js';
 import { Filter } from './filter.js';
 
 
@@ -19,23 +18,28 @@ export class App extends Component {
 
         const rawFilter = new Filter();
         const filter = rawFilter.renderDOM();
-        dom.append(filter);
-
+        const filterSection = dom.querySelector('.selection-menu-section');
+        filterSection.appendChild(filter);
+        
         const rawUl = new UnorderedList(props);
         const ul = rawUl.renderDOM();
-        dom.append(ul);
+        const gallerySection = dom.querySelector('.photo-gallery-section');
+        gallerySection.appendChild(ul);
 
         const rawFooter = new Footer();
         const footer = rawFooter.renderDOM();
-        dom.append(footer);
+        dom.appendChild(footer);
     }
 
     
     renderHTML() {
         return /*html*/`
+        
             <main>
-
+                <aside class="selection-menu-section"></aside>
+                <section class="photo-gallery-section"></section>
             </main>
+        
         `;
     }
     
