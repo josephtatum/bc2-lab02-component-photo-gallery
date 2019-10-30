@@ -5,12 +5,12 @@ import { Footer } from './footer.js';
 import { UnorderedList } from './unordered-list.js';
 import { Filter } from './filter.js';
 
-
 export class App extends Component {
 
     onRender(dom) {
         
         const props = { images };
+        const body = document.querySelector('body');
 
         const rawHeader = new Header();
         const header = rawHeader.renderDOM();
@@ -36,20 +36,15 @@ export class App extends Component {
                 rawUl.update(updatedProps);
             }
         });
-
         const filter = rawFilter.renderDOM();
-
         const filterSection = dom.querySelector('.selection-menu-section');
         filterSection.appendChild(filter);
         
-        
-
         const rawFooter = new Footer();
         const footer = rawFooter.renderDOM();
-        dom.appendChild(footer);
+        body.appendChild(footer);
     }
 
-    
     renderHTML() {
         return /*html*/`
         
@@ -60,5 +55,4 @@ export class App extends Component {
         
         `;
     }
-    
 }
