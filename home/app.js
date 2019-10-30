@@ -16,15 +16,33 @@ export class App extends Component {
         const header = rawHeader.renderDOM();
         dom.prepend(header);
 
-        const rawFilter = new Filter();
-        const filter = rawFilter.renderDOM();
-        const filterSection = dom.querySelector('.selection-menu-section');
-        filterSection.appendChild(filter);
-        
         const rawUl = new UnorderedList(props);
         const ul = rawUl.renderDOM();
         const gallerySection = dom.querySelector('.photo-gallery-section');
         gallerySection.appendChild(ul);
+
+        const rawFilter = new Filter({
+            images: images,
+            onFilter: (keyword) => {
+                let filteredArray = null;
+
+                filteredArray = images.filter(image => image.keyword === keyword);
+
+                if (filteredArray.length === 0) {
+                    filteredArray = images;
+                }
+                
+                const updatedProps = { images: filteredArray };
+                rawUl.update(updatedProps);
+            }
+        });
+
+        const filter = rawFilter.renderDOM();
+
+        const filterSection = dom.querySelector('.selection-menu-section');
+        filterSection.appendChild(filter);
+        
+        
 
         const rawFooter = new Footer();
         const footer = rawFooter.renderDOM();

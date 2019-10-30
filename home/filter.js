@@ -3,7 +3,12 @@ import Component from '../component.js';
 
 export class Filter extends Component {
 
-    onRender() {
+    onRender(select) {
+        const onFilter = this.props.onFilter;
+
+        select.addEventListener('change', () => {
+            onFilter(select.value);
+        });
 
     }
 
