@@ -1,4 +1,3 @@
-import images from '../data/images.js';
 import Component from '../component.js';
 
 export class Filter extends Component {
