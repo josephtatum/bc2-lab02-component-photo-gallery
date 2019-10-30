@@ -1,10 +1,12 @@
-import images from '../data/images.js';
 import Component from '../component.js';
 
 export class ListItem extends Component {
 
     renderHTML() {
-        const html = /*html*/`
+        const image = this.props.image;
+        console.log(image);
+        
+        return /*html*/`
     
         <li title="${image.description}" class="gallery-item" style="background-image: url('${image.url}')">
             <div class="item-description">
